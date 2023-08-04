@@ -34,15 +34,9 @@ RUN docker-php-ext-configure intl \
   opcache \
   intl \
   zip \
-  calendar \
-  dom \
   mbstring \
   zip \
   gd \
-  xsl \
-  soap \
-  sockets \
-  exif \
   bcmath
 
 RUN docker-php-source extract \
@@ -67,4 +61,13 @@ RUN  apk del .phpize-deps-configure \
         /var/cache/apk/* \
         /var/tmp/*
 
-RUN echo "memory_limit=1G" > /usr/local/etc/php/conf.d/zz-conf.ini
+RUN echo -e "\
+    memory_limit=1G \n\
+    \n\
+    [date] \n\
+    date.timezone=Europe/Brussels \n\
+    " > /usr/local/etc/php/conf.d/zz-conf.ini
+
+RUN mkdir -p /code
+
+WORKDIR /code
