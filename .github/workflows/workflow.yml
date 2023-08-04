@@ -1,4 +1,4 @@
-name: Docker PHP Images GitHub workflow
+name: Docker PHP Images build
 
 on:
   push:
