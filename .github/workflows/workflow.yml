@@ -40,5 +40,5 @@ jobs:
         run: make tag push TAG="${{ matrix.php_version }}" DOCKERHUB_USERNAME="enabel"
 
       - name: Release latest
-        if: ${{ github.event_name == 'push' || github.event_name == 'schedule' }} && ${{ matrix.php_version = '8.2' }}
+        if: ${{ (github.event_name == 'push' || github.event_name == 'schedule') && matrix.php_version == '8.2' }}
         run: make tag push TAG="latest" DOCKERHUB_USERNAME="enabel"
