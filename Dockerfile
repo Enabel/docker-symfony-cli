@@ -61,13 +61,10 @@ RUN  apk del .phpize-deps-configure \
         /var/cache/apk/* \
         /var/tmp/*
 
-RUN echo -e "\
-    memory_limit=1G \n\
-    \n\
-    [date] \n\
-    date.timezone=Europe/Brussels \n\
-    " > /usr/local/etc/php/conf.d/zz-conf.ini
+RUN echo -e "memory_limit=1G\n[date]\ndate.timezone=Europe/Brussels" > /usr/local/etc/php/conf.d/zz-conf.ini
 
 RUN mkdir -p /code
+
+EXPOSE 8000
 
 WORKDIR /code
